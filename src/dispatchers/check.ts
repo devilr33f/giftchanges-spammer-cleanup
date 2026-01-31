@@ -73,15 +73,17 @@ checkDispatcher.onNewMessage(
                 }
             }
 
-            if (candidates.length) {
+            if (candidates.length ) {
                 console.log(`[~] Found ${candidates.length} candidates for "${user.displayName}" (id: ${user.id})`)
 
                 const matches = candidates.filter((candidate) => BAD_CHANNELS.some((regexp) => regexp.test(candidate.name)))
-                console.log(`[~] Found ${matches.length} bad matches, banning...`)
+                if (matches.length) {
+                    console.log(`[~] Found ${matches.length} bad matches, banning...`)
 
-                const detectionsText = matches.map(({ type }) => DETECTION_REASON_MAPPING[type]).join(', ')
+                    const detectionsText = matches.map(({ type }) => DETECTION_REASON_MAPPING[type]).join(', ')
 
-                await ctx.replyText(`/dban 🤖 Bad channel detected (detections: ${detectionsText})`)
+                    await ctx.replyText(`/dban 🤖 Bad channel detected (detections: ${detectionsText})`)
+                }
             }
         }
     }
