@@ -1,0 +1,28 @@
+{
+  "name": "giftchanges-spammer-cleanup",
+  "type": "module",
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264",
+  "author": {
+    "name": "devilreef",
+    "url": "https://github.com/devilr33f"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development tsx --watch src/index.ts",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@mtcute/dispatcher": "^0.27.8",
+    "@mtcute/node": "^0.27.8",
+    "env-var": "^7.5.0",
+    "ioredis": "^5.9.2",
+    "qr": "^0.5.4",
+    "tsx": "^4.20.3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.16.2",
+    "@types/node": "^22.16.3",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.31.0"
+  }
+}
