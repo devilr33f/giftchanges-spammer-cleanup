@@ -25,7 +25,7 @@ checkDispatcher.onNewMessage(
             })
             counter = history.length
 
-            await redis.set(`counter:${ctx.sender.id}`, history.length.toString())
+            await redis.set(`counter:${ctx.sender.id}`, history.length.toString(), 'EX', 300)
         }
 
         if (counter < 10) {
