@@ -72,8 +72,32 @@ checkDispatcher.onNewMessage(
                     })
                 }
             }
+            
+            const stories = await ctx.client.getPeerStories(ctx.sender)
+                .then((r) => r.stories)
+                .catch((err) => {
+                    console.warn(`[!] Unable to get stories:`, err)
+                    return null
+                })
 
-            if (candidates.length ) {
+            if (stories && stories.length) {
+                const tmeUrls = stories.filter((story) => {
+                    return story.interactiveElements?.filter((elem) => {
+                        return elem.raw._ === 'mediaAreaUrl' && TME_REGEXP.test(elem.raw.url)
+                    })
+                }).map((story) => {
+                    return story.interactiveElements.map((elem) => elem.raw._ === 'mediaAreaUrl' && elem.raw.url)
+                }).flat()
+                  .filter((a) => a !== false)
+
+                console.log(tmeUrls)
+                
+                if (tmeUrls.length) {
+                    const previews = await Promise.all(tmeUrls.map((url) => ctx.client.getChatPreview(url).catch((r) => { return null })))
+                }
+            }
+
+            if (candidates.length) {
                 console.log(`[~] Found ${candidates.length} candidates for "${user.displayName}" (id: ${user.id})`)
 
                 const matches = candidates.filter((candidate) => BAD_CHANNELS.some((regexp) => regexp.test(candidate.name)))
