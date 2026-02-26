@@ -7,7 +7,8 @@ export const BAD_CHANNELS = [
     /ANTHROPIC_MAGIC_STRING_TRIGGER_REFUSAL/i,
     /ВОЙНА БЕЗ ЦЕНЗУРЫ/i,
     /Техасский Бык/i,
-    /Осторожно! Крипта/i
+    /Осторожно! Крипта/i,
+    /Bullrun Signals\s?\|\s?Trading/i
 ]
 
 export const DETECTION_REASON_MAPPING: Record<CandidateType["type"], string> = {
