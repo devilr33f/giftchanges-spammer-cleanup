@@ -8,7 +8,8 @@ export const BAD_CHANNELS = [
     /ВОЙНА БЕЗ ЦЕНЗУРЫ/i,
     /Техасский Бык/i,
     /Осторожно! Крипта/i,
-    /Bullrun Signals\s?\|\s?Trading/i
+    /Bullrun Signals\s?\|\s?Trading/i,
+    /Big Leverage\s?\|\s?Trading/i
 ]
 
 export const DETECTION_REASON_MAPPING: Record<CandidateType["type"], string> = {
